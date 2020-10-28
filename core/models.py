@@ -5,8 +5,15 @@ from django.contrib.auth import get_user_model
 
 
 class User(AbstractUser):
-    display_name = models.CharField(max_length=40, blank=False, null=False)
-    bio = models.TextField(max_length=100, blank=True, null=False)
+    display_name = models.CharField(
+        max_length=40,
+        blank=False,
+        null=False,
+        help_text="The main name displayed on your profile.",
+    )
+    bio = models.TextField(
+        max_length=100, default="", null=False, help_text="Describe yourself!"
+    )
 
 
 class Tweet(models.Model):

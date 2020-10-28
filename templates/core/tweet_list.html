@@ -1,16 +1,8 @@
 {% extends 'base.html' %}
 
 {% block main %}
+<h1 class="text-center">Feed</h1>
 {% for tweet in object_list %}
-<div class="card w-50 mx-auto">
-    <div class="card-header">
-        <h5 class="card-title">{{ tweet.user.display_name }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">@{{ tweet.user.username }}</h6>
-    </div>
-    <div class="card-body">
-        {{ tweet.text }}
-    </div>
-    <div class="card-footer">{{ tweet.created_at }}</div>
-</div>
+    {% include 'core/tweet_card.html' %}
 {% endfor %}
 {% endblock main %}

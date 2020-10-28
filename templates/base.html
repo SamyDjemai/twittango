@@ -19,18 +19,27 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         {% block navlinks %}
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'feed' %}">Feed</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        User
+                        {% if user.is_authenticated %}
+                            @{{ user.username }}
+                        {% else %}
+                            Not logged in
+                        {% endif %}
                     </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Login</a>
-                    <a class="dropdown-item" href="#">Register</a>
+                {% if user.is_authenticated %}
+                    <a class="dropdown-item" href="{% url 'logout' %}">Profile</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                {% else %}
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                    <a class="dropdown-item" href="{% url 'signup' %}">Sign up</a>
+                {% endif %}
                 </div>
                 </li>
             </ul>

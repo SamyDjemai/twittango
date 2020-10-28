@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "crispy_forms",
     "core",
 ]
 
@@ -114,3 +115,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+
+
+# Login behaviour
+
+LOGIN_REDIRECT_URL = "/feed"
+LOGOUT_REDIRECT_URL = "/"
