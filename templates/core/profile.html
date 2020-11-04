@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-4">{{ user.display_name }}</h1>
+    <p class="text-muted">@{{ user.username }}</p>
+    <p class="lead">{{ user.bio }}</p>
+  </div>
+</div>
+
+{% for tweet in tweets %}
+    {% include 'core/tweet_card.html' %}
+{% endfor %}
+{% endblock main %}

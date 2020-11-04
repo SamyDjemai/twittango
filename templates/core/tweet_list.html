@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block main %}
 <h1 class="text-center">Feed</h1>
+{% if user.is_authenticated %}
+<div class="card w-50 mx-auto mb-4">
+<form method="post" action="{% url 'post_tweet' %}">
+    <div class="card-body">
+        {% csrf_token %}
+        {{ form|crispy }}
+    </div>
+    <div class="card-footer text-right"><button type="submit" class="btn btn-primary">Tweet</button></div>
+</form>
+</div>
+    
+{% endif %}
 {% for tweet in object_list %}
     {% include 'core/tweet_card.html' %}
 {% endfor %}

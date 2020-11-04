@@ -1,8 +1,8 @@
-<div class="card w-50 mx-auto">
+<div class="card w-50 mx-auto mb-2">
     <div class="card-body">
         <div class="row">
             <div class="col-md-auto">
-                <h5 class="card-title">{{ tweet.user.display_name }}</h5>
+                <h5 class="card-title"><a href="{% url 'profile_view' tweet.user.username %}">{{ tweet.user.display_name }}</a></h5>
             </div>
             <div class="col">
                 <h6 class="text-muted text-right">@{{ tweet.user.username }}</h6>
